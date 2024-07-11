@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Todo App</title>
+<link
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+rel="stylesheet"
+/>
+</head>
+
+<body>
+<div class="container">
+<h1>Todo List</h1>
+
+<form action="/add_todo" method="POST">
+<div class="form-group">
+<label for="todo">Todo</label>
+<input type="text" name="todo" id="todo" class="form-control" />
+</div>
+
+<button type="submit" class="btn btn-primary">Add</button>
+</form>
+
+<ul class="list-group mt-4">
+{% for todo in todos %}
+<li class="list-group-item">
+<input
+type="checkbox"
+name="{{ todo }}"
+id="{{ todo }}"
+class="form-check-input me-1"
+/>
+<label class="form-check-label" for="{{ todo }}">{{ todo }}</label>
+</li>
+{% endfor %}
+</ul>
+
+<form action="/remove_completed" method="POST">
+<button type="submit" class="btn btn-danger mt-4">Remove Completed</button>
+</form>
+</div>
+</body>
+</html>
+
